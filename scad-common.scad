@@ -18,7 +18,6 @@ m2_screw_diameter = 2.4;
 m2_shcs_head_diameter = 3.8;
 m2_shcs_head_depth = 2.0;
 
-
 module four_corner_array(length, width)
 {
     for(coordinates = [[-width,-length], [width,-length], [width,length], [-width,length]])
@@ -56,12 +55,4 @@ module m2dot5_clearance_hole(length, head=true)
     {
         cylinder(h=length, d=m2dot5_screw_diameter);
     }
-}
-
-module goat_logo()
-{
-    translate([-goat_width/2, -(goat_width/goat_aspect_ratio)/2, 0])
-        linear_extrude(goat_depth)
-            resize([goat_width, 0, 0], auto=true)
-                import("goat.dxf");
 }
