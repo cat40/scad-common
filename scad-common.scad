@@ -14,6 +14,10 @@ m2dot5_screw_diameter = 2.75;
 m2dot5_shcs_head_diameter = 4.8;
 m2dot5_shcs_head_depth = 2.5;
 
+m2_screw_diameter = 2.4;
+m2_shcs_head_diameter = 3.8;
+m2_shcs_head_depth = 2.0;
+
 
 module four_corner_array(length, width)
 {

@@ -28,9 +28,20 @@ feather_usb_connector_offset = 10;
 12_pixel_ring_thickness = 3.5;
 12_pixel_ring_pcb_thickness = 2.75;
 
+// slide potentiometer
+45mm_slide_pot_length = 45.5;
+45mm_slide_pot_width = 10;
+45mm_slide_pot_hole_spacing = 41;
+45mm_slide_pot_hole_size = m2_screw_diameter;
+45mm_slide_pot_travel = 30;
+45mm_slide_pot_slider_length = 5;
+45mm_slide_pot_slider_width = 2.4;
+45mm_slide_pot_slot_length = 45mm_slide_pot_travel + 45mm_slide_pot_slider_length;
+45mm_max_mount_thickness = 4.5;
 
 
-module feather_standoffs(length)
+
+module feather_standoffs(length=m2dot5_heatset_depth*1.5)
 {
     four_corner_array(feather_hole_distance_from_center_length, feather_hole_distance_from_center_width)
             feather_standoff(length);
@@ -54,4 +65,22 @@ module 12_pixel_ring(h=12_pixel_ring_thickness)
         cylinder(h=h, d=12_pixel_ring_outer_diameter);
         cylinder(h=h, d=12_pixel_ring_inner_diameter);
     }
+}
+
+module 45mm_slide_pot_mount(screw_length=45mm_max_mount_thickness)
+{
+    translate([0, 45mm_slide_pot_hole_spacing/2, 0])
+    {
+        cylinder(h=screw_length, d=m2_screw_diameter);
+        translate([0, 0, screw_length-m2_shcs_head_depth])
+            cylinder(h=m2_shcs_head_depth, d=m2_shcs_head_diameter);
+    }
+    translate([0, -45mm_slide_pot_hole_spacing/2, 0])
+    {
+        cylinder(h=screw_length, d=m2_screw_diameter);
+        translate([0, 0, screw_length-m2_shcs_head_depth])
+            cylinder(h=m2_shcs_head_depth, d=m2_shcs_head_diameter);
+    }
+    translate([-45mm_slide_pot_slider_width/2, -45mm_slide_pot_slot_length/2, 0])
+        cube([45mm_slide_pot_slider_width, 45mm_slide_pot_slot_length, screw_length]);
 }
