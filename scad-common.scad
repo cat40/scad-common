@@ -21,3 +21,8 @@ module four_corner_array(length, width)
             children();
     }
 }
+
+module m2dot5_heatset()
+{
+    cylinder(h=m2dot5_heatset_depth, d=m2dot5_heatset_diameter);
+}
