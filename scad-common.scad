@@ -57,3 +57,11 @@ module m2dot5_clearance_hole(length, head=true)
         cylinder(h=length, d=m2dot5_screw_diameter);
     }
 }
+
+module goat_logo()
+{
+    translate([-goat_width/2, -(goat_width/goat_aspect_ratio)/2, 0])
+        linear_extrude(goat_depth)
+            resize([goat_width, 0, 0], auto=true)
+                import("goat.dxf");
+}
