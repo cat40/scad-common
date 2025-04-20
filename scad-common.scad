@@ -30,8 +30,8 @@ module four_corner_array(length, width)
 
 module circle_array(count, radius, angle=360)
 {
-    increment = angle/(count);
-    for(theta = [0:increment:angle-increment])
+    increment = angle/(count-1);
+    for(theta = [0:increment:angle])
     {
         translate([-radius*sin(theta), radius*cos(theta), 0])
             rotate([0, 0, theta])

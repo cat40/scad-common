@@ -9,6 +9,7 @@ feather_hole_diameter = 0.1*25.4;
 feather_hole_distance_from_center_length = 1.8*25.4/2;
 feather_hole_distance_from_center_width = 0.7*25.4/2;
 feather_standoff_radius = m2dot5_heatset_diameter/2 + m2dot5_heatset_wall_thickness;
+feather_standoff_default_height = m2dot5_heatset_depth*1.5;
 
 // usb is center-left
 // USB height are relative to the *bottom* of the host feather PCB
@@ -41,7 +42,7 @@ feather_usb_connector_offset = 10;
 
 
 
-module feather_standoffs(length=m2dot5_heatset_depth*1.5)
+module feather_standoffs(length=feather_standoff_default_height)
 {
     four_corner_array(feather_hole_distance_from_center_length, feather_hole_distance_from_center_width)
             feather_standoff(length);
@@ -58,6 +59,30 @@ module feather_standoff(length)
     }
 }
 
+
+module usb_connector_negative(length, fudge=0.1, extrude=0.1)
+{
+    hull()
+    {
+        linear_extrude(0.1)
+            usb_connector_outline(offset=0);
+        translate([0, 0, length+fudge])
+            linear_extrude(0.1)
+                usb_connector_outline(offset=feather_usb_connector_offset);
+    }
+}
+
+module usb_connector_outline(offset=0)
+{
+    hull()
+    {
+        x_translate = feather_usb_connector_width/2 - (feather_usb_connector_thickness)/2 + offset/2;
+        translate([-x_translate, 0, 0])
+            circle(d=feather_usb_connector_thickness+offset);   
+        translate([x_translate, 0, 0])
+            circle(d=feather_usb_connector_thickness+offset);
+    }
+}
 module 12_pixel_ring(h=12_pixel_ring_thickness)
 {
     difference()
