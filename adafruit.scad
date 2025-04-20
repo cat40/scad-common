@@ -17,6 +17,12 @@ feather_usb_connector_thickness = 2.75;
 feather_usb_connector_width = 6.6 + 0.8;
 feather_usb_connector_offset = 10;
 
+battery_radius = 18/2;
+battery_length = 69;
+battery_grip_thickness = 2;
+battery_grip_height = battery_radius*2 + 8;
+battery_grip_width = battery_radius*2 + 5;
+
 
 
 module feather_standoffs(length)
@@ -35,5 +41,3 @@ module feather_standoff(length)
             cylinder(h=m2dot5_heatset_depth, d=m2dot5_heatset_diameter);
     }
 }
-
-feather_standoffs(10);
