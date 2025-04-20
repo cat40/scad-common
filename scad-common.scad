@@ -24,6 +24,17 @@ module four_corner_array(length, width)
     }
 }
 
+module circle_array(count, radius, angle=360)
+{
+    increment = angle/(count);
+    for(theta = [0:increment:angle-increment])
+    {
+        translate([-radius*sin(theta), radius*cos(theta), 0])
+            rotate([0, 0, theta])
+                children();
+    }
+}
+
 module m2dot5_heatset()
 {
     cylinder(h=m2dot5_heatset_depth, d=m2dot5_heatset_diameter);

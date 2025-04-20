@@ -21,6 +21,13 @@ feather_usb_connector_offset = 10;
 2200_battery_radius = 18/2;
 2200_battery_length = 69;
 
+// ring of 12 neopixels
+12_pixel_ring_inner_diameter = 23.5;
+12_pixel_ring_outer_diameter = 37.5;
+12_pixel_ring_crosssection = (12_pixel_ring_outer_diameter-12_pixel_ring_inner_diameter)/2;
+12_pixel_ring_thickness = 3.5;
+12_pixel_ring_pcb_thickness = 2.75;
+
 
 
 module feather_standoffs(length)
@@ -37,5 +44,14 @@ module feather_standoff(length)
         cylinder(h=length, d=m2dot5_screw_diameter);
         translate([0, 0, length-m2dot5_heatset_depth])
             cylinder(h=m2dot5_heatset_depth, d=m2dot5_heatset_diameter);
+    }
+}
+
+module 12_pixel_ring(h=12_pixel_ring_thickness)
+{
+    difference()
+    {
+        cylinder(h=h, d=12_pixel_ring_outer_diameter);
+        cylinder(h=h, d=12_pixel_ring_inner_diameter);
     }
 }
