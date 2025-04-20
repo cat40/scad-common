@@ -17,11 +17,9 @@ feather_usb_connector_thickness = 2.75;
 feather_usb_connector_width = 6.6 + 0.8;
 feather_usb_connector_offset = 10;
 
-battery_radius = 18/2;
-battery_length = 69;
-battery_grip_thickness = 2;
-battery_grip_height = battery_radius*2 + 8;
-battery_grip_width = battery_radius*2 + 5;
+// 2200mAh lion battery
+2200_battery_radius = 18/2;
+2200_battery_length = 69;
 
 
 
