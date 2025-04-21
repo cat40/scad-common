@@ -32,7 +32,7 @@ feather_usb_connector_offset = 10;
 // slide potentiometer
 45mm_slide_pot_length = 45.5;
 45mm_slide_pot_width = 10;
-45mm_slide_pot_hole_spacing = 41;
+45mm_slide_pot_hole_spacing = 41 + 0.5;
 45mm_slide_pot_hole_size = m2_screw_diameter;
 45mm_slide_pot_travel = 30;
 45mm_slide_pot_slider_length = 5;

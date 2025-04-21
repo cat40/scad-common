@@ -8,6 +8,7 @@ m3_heatset_wall_thickness = 2;
 m2dot5_heatset_diameter = 3.6;
 m2dot5_heatset_depth = 4;
 m2dot5_heatset_wall_thickness = 1.6;
+m2dot5_heatset_mount_min_diameter = m2dot5_heatset_diameter + 2*m2dot5_heatset_wall_thickness;
 
 // screws
 m2dot5_screw_diameter = 2.75;
@@ -29,6 +30,7 @@ module four_corner_array(length, width)
 
 module circle_array(count, radius, angle=360)
 {
+    // this still somehow has a bug (now when the angle=360, there is 1 fewer instance)
     increment = angle/(count-1);
     for(theta = [0:increment:angle])
     {
@@ -36,6 +38,13 @@ module circle_array(count, radius, angle=360)
             rotate([0, 0, theta])
                 children();
     }
+}
+
+module mirror_copy(vector)
+{
+    children();
+    mirror(vector)
+        children();
 }
 
 module m2dot5_heatset()
