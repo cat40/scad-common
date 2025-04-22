@@ -31,8 +31,8 @@ module four_corner_array(length, width)
 module circle_array(count, radius, angle=360)
 {
     // this still somehow has a bug (now when the angle=360, there is 1 fewer instance)
-    increment = angle/(count-1);
-    for(theta = [0:increment:angle])
+    increment = angle/(count);
+    for(theta = [0:increment:angle-.001])  // .001 is to avoid a duplicate at the top
     {
         translate([-radius*sin(theta), radius*cos(theta), 0])
             rotate([0, 0, theta])
