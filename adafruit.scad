@@ -26,7 +26,7 @@ feather_usb_connector_offset = 10;
 12_pixel_ring_inner_diameter = 23.5;
 12_pixel_ring_outer_diameter = 37.5+0.5;
 12_pixel_ring_crosssection = (12_pixel_ring_outer_diameter-12_pixel_ring_inner_diameter)/2;
-12_pixel_ring_thickness = 3.5;
+12_pixel_ring_thickness = 4.5;
 12_pixel_ring_pcb_thickness = 2.75;
 
 // slide potentiometer
