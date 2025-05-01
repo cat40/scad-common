@@ -47,6 +47,17 @@ module mirror_copy(vector)
         children();
 }
 
+module rounded_rectangle(width, length, corner_radius)
+{
+    hull()
+    {
+        four_corner_array(width/2-corner_radius,length/2-corner_radius)
+        {
+            circle(r=corner_radius);
+        }
+    }
+}
+
 module m2dot5_heatset()
 {
     cylinder(h=m2dot5_heatset_depth, d=m2dot5_heatset_diameter);
