@@ -19,6 +19,10 @@ m2_screw_diameter = 2.4;
 m2_shcs_head_diameter = 3.8;
 m2_shcs_head_depth = 2.0;
 
+// magnets
+m6_magnet_diameter = 6;
+m6_magnet_thickness = 3;
+
 module four_corner_array(length, width)
 {
     for(coordinates = [[-width,-length], [width,-length], [width,length], [-width,length]])
