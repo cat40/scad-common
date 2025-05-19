@@ -44,6 +44,29 @@ module circle_array(count, radius, angle=360)
     }
 }
 
+module rectangle_array(x_count, y_count, x_length=0, y_length=0, x_spacing=0, y_spacing=0)
+{
+    if(x_length>0)
+    {
+        x_spacing = x_length/(x_count);
+    }
+    if(y_length>0)
+    {
+        y_spacing = y_length/(y_count);
+    }
+    
+    for(x=[0:x_spacing:x_spacing*(x_count)])
+    {
+        for(y=[0:y_spacing:y_spacing*(y_count)])
+        {
+            translate([x, y, 0])
+            {
+                children();
+            }
+        }
+    }
+}
+
 module mirror_copy(vector)
 {
     children();
@@ -79,4 +102,9 @@ module m2dot5_clearance_hole(length, head=true)
     {
         cylinder(h=length, d=m2dot5_screw_diameter);
     }
+}
+
+module m6_magnet()
+{
+    cylinder(d=m6_magnet_diameter, h=m6_magnet_thickness);
 }
