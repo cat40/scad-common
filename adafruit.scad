@@ -40,7 +40,16 @@ feather_usb_connector_offset = 10;
 45mm_slide_pot_slot_length = 45mm_slide_pot_travel + 45mm_slide_pot_slider_length;
 45mm_max_mount_thickness = 4.5;
 
-
+// matrix keypad
+3x4_keypad_width = 46;
+3x4_keypad_length = 57;
+3x4_keypad_radius = 3.5;
+3x4_keypad_hole_radius = 2/2;
+3x4_keypad_clearance_length = 69;
+3x4_keypad_clearance_width = 51;
+3x4_keypad_clearance_depth = 3.1;
+3x4_keypad_protrusion = 3.3;
+3x4_keypad_clearance_offset = 3.5;
 
 module feather_standoffs(length=feather_standoff_default_height)
 {
@@ -108,4 +117,13 @@ module 45mm_slide_pot_mount(screw_length=45mm_max_mount_thickness)
     }
     translate([-45mm_slide_pot_slider_width/2, -45mm_slide_pot_slot_length/2, 0])
         cube([45mm_slide_pot_slider_width, 45mm_slide_pot_slot_length, screw_length]);
+}
+
+module 3x4_keypad(clearance_depth=3x4_keypad_clearance_depth)
+{
+    linear_extrude(3x4_keypad_protrusion)
+        rounded_rectangle(3x4_keypad_width, 3x4_keypad_length, 3x4_keypad_radius);
+    translate([-3x4_keypad_clearance_offset, 0, -3x4_keypad_protrusion])
+    linear_extrude(clearance_depth)
+        square([3x4_keypad_clearance_length, 3x4_keypad_clearance_width], center=true);
 }
