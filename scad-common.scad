@@ -19,6 +19,10 @@ m2_screw_diameter = 2.4;
 m2_shcs_head_diameter = 3.8;
 m2_shcs_head_depth = 2.0;
 
+// magnets
+m6_magnet_diameter = 6;
+m6_magnet_thickness = 3;
+
 module four_corner_array(length, width)
 {
     for(coordinates = [[-width,-length], [width,-length], [width,length], [-width,length]])
@@ -37,6 +41,29 @@ module circle_array(count, radius, angle=360)
         translate([-radius*sin(theta), radius*cos(theta), 0])
             rotate([0, 0, theta])
                 children();
+    }
+}
+
+module rectangle_array(x_count, y_count, x_length=0, y_length=0, x_spacing=0, y_spacing=0)
+{
+    if(x_length>0)
+    {
+        x_spacing = x_length/(x_count);
+    }
+    if(y_length>0)
+    {
+        y_spacing = y_length/(y_count);
+    }
+    
+    for(x=[0:x_spacing:x_spacing*(x_count)])
+    {
+        for(y=[0:y_spacing:y_spacing*(y_count)])
+        {
+            translate([x, y, 0])
+            {
+                children();
+            }
+        }
     }
 }
 
@@ -75,4 +102,9 @@ module m2dot5_clearance_hole(length, head=true)
     {
         cylinder(h=length, d=m2dot5_screw_diameter);
     }
+}
+
+module m6_magnet()
+{
+    cylinder(d=m6_magnet_diameter, h=m6_magnet_thickness);
 }
