@@ -51,6 +51,10 @@ feather_usb_connector_offset = 10;
 3x4_keypad_protrusion = 3.3;
 3x4_keypad_clearance_offset = 3.5;
 
+slim_button_width = 3.7;
+slim_button_length = 6.2;
+slim_button_height = 3;
+
 module feather_standoffs(length=feather_standoff_default_height)
 {
     four_corner_array(feather_hole_distance_from_center_length, feather_hole_distance_from_center_width)
@@ -126,4 +130,10 @@ module 3x4_keypad(clearance_depth=3x4_keypad_clearance_depth)
     translate([-3x4_keypad_clearance_offset, 0, -3x4_keypad_protrusion])
     linear_extrude(clearance_depth)
         square([3x4_keypad_clearance_length, 3x4_keypad_clearance_width], center=true);
+}
+
+module slim_button()
+{
+    translate([0, 0, slim_button_height/2])
+        cube([slim_button_width, slim_button_length, slim_button_height], center=true);
 }
