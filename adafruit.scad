@@ -42,8 +42,8 @@ feather_usb_connector_offset = 10;
 45mm_max_mount_thickness = 4.5;
 
 // matrix keypad
-3x4_keypad_width = 46;
-3x4_keypad_length = 57;
+3x4_keypad_width = 47;
+3x4_keypad_length = 58;
 3x4_keypad_radius = 3.5;
 3x4_keypad_hole_radius = 2/2;
 3x4_keypad_clearance_length = 69;
@@ -52,8 +52,8 @@ feather_usb_connector_offset = 10;
 3x4_keypad_protrusion = 3.3;
 3x4_keypad_clearance_offset = 3.5;
 
-slim_button_width = 3.7;
-slim_button_length = 6.2;
+slim_button_width = 4;
+slim_button_length = 6.6;
 slim_button_height = 3;
 
 module feather_standoffs(length=feather_standoff_default_height)
