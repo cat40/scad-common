@@ -10,6 +10,7 @@ feather_hole_distance_from_center_length = 1.8*25.4/2;
 feather_hole_distance_from_center_width = 0.7*25.4/2;
 feather_standoff_radius = m2dot5_heatset_diameter/2 + m2dot5_heatset_wall_thickness;
 feather_standoff_default_height = m2dot5_heatset_depth*1.5;
+feather_mount_translate_offset_l = feather_length/2 + feather_standoff_radius;
 
 // usb is center-left
 // USB height are relative to the *bottom* of the host feather PCB
@@ -73,16 +74,19 @@ module feather_standoff(length)
 }
 
 
-module usb_connector_negative(length, fudge=0.1, extrude=0.1)
+module usb_connector_negative(length, fudge=0.1, extrude=0.8)
 {
+    translate([0, 0, extrude])
     hull()
     {
         linear_extrude(0.1)
             usb_connector_outline(offset=0);
-        translate([0, 0, length+fudge])
+        translate([0, 0, (length-extrude)+fudge])
             linear_extrude(0.1)
                 usb_connector_outline(offset=feather_usb_connector_offset);
     }
+    linear_extrude(extrude)
+        usb_connector_outline(offset=0);
 }
 
 module usb_connector_outline(offset=0)
