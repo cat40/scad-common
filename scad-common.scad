@@ -23,12 +23,22 @@ m2_shcs_head_depth = 2.0;
 m6_magnet_diameter = 6;
 m6_magnet_thickness = 3;
 
-module four_corner_array(length, width)
+function bool_to_int(bool) = bool ? 1 : 0;
+
+module four_corner_array(length, width, do_mirror=false)
 {
     for(coordinates = [[-width,-length], [width,-length], [width,length], [-width,length]])
     {
         translate([coordinates[0], coordinates[1], 0])
-            children();
+            if (do_mirror)
+            {
+                mirror([bool_to_int(sign(coordinates[0])>0), bool_to_int(sign(coordinates[1])>0), 0])
+                    children();
+            }
+            else
+            {
+                children();
+            }
     }
 }
 
@@ -137,8 +147,6 @@ module m2dot5_heatset_mount(length, hole_depth=0, cutoff_angle=0)
         }
     }
 }
-
-m2dot5_heatset_mount(50, hole_depth=5, cutoff_angle=1);
 
 module m6_magnet()
 {
